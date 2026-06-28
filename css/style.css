@@ -16,7 +16,7 @@ body {
     height: 100vh;
 }
 
-.login-container {
+.auth-container {
     background: #F3F7FF;
     width: 400px;
     padding: 2rem;
