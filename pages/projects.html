@@ -27,6 +27,53 @@
 <button>
     +Nuevo proyecto
 </button>
+<div class="modal">
+    <div class="modal-header">
+        <h2>Nuevo proyecto</h2>
+    </div>
+    <form>
+       <label for="name">Nombre del proyecto</label>
+       <input
+           id="name"
+           name="name"
+           type="text"
+           placeholder="Nombre del proyecto"
+        >
+      <label for="description">Descripción del proyecto</label>
+       <textarea
+           id="description"
+           name="description"
+           placeholder="Describe el proyecto"
+       ></textarea>
+       <label for="subject">Materia</label>
+       <input
+        id="subject"
+        name="subject"
+        type="text"
+        placeholder="Materia del proyecto"
+       >
+       <label for="delivery-date">Fecha de entrega</label>
+       <input
+           id="delivery-date"
+           name="delivery-date"
+           type="date"
+        >
+        <label for="status">Estado</label>
+            <select id="status" name="status">
+            <option value="in-progress">En curso</option>
+            <option value="completed">Finalizado</option>
+            <option value="paused">Pausado</option>
+            </select>
+        <div class="modal-actions">
+        <button type="button">
+            Cancelar
+         </button>
+        <button type="submit">
+            Guardar proyecto
+        </button>
+        </div>
+    </form>
+</div>
     <div class="projects-list">
         <div class="card">
              <h3>MAI</h3>
