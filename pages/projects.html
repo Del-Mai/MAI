@@ -24,19 +24,19 @@
         <h2> Proyectos</h2>
         <p>Aquí puedes administrar todos tus proyectos.</p>
     </div>
-<button class="primary-button">
+<button id="open-project-modal" class="primary-button">
     +Nuevo proyecto
 </button>
-<div class="overlay">
+<div class="overlay hidden">
     <div class="modal">
 
-    <div class="modal-header">
+    <div id="close-project-modal" class="modal-header">
         <h2> Nuevo proyecto</h2>
         <button class="close-modal" type="button">
          ✕
         </button>
     </div>
-    <form>
+    <form id="project-form">
        <label for="name">Nombre del proyecto</label>
        <input
            id="name"
@@ -69,7 +69,7 @@
             <option value="completed">Finalizado</option>
             <option value="paused">Pausado</option>
             </select>
-        <div class="modal-actions">
+        <div id="cancel-project-modal" class="modal-actions">
         <button class="primary-button" type="button">
           Cancelar
         </button>
@@ -119,5 +119,6 @@
     </div>
 </main>
 </div>
+<script src="../js/projects.js"></script>
 </body>
 </html>

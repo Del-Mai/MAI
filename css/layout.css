@@ -195,3 +195,7 @@ aside a.active {
 .close-modal:hover {
     color: #3E5992;
 }
+
+.hidden{
+    display: none;
+}
