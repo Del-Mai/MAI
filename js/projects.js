@@ -12,6 +12,22 @@ const projectDeliveryDateInput = document.querySelector("#delivery-date");
 const projectStatusInput = document.querySelector("#status");
 const projectsList = document.querySelector(".projects-list");
 
+let projects = [];
+
+const savedProjects = localStorage.getItem("projects");
+
+if (savedProjects) {
+
+    projects = JSON.parse(savedProjects);
+
+}
+
+for (const project of projects) {
+
+    createProjectCard(project);
+
+}
+
 console.log(openProjectModalButton);
 
 openProjectModalButton.addEventListener("click", function () {
@@ -32,21 +48,8 @@ cancelProjectModalButton.addEventListener("click", function () {
 
 });
 
-projectForm.addEventListener("submit", function (event) {
-
-    event.preventDefault();
-
-    const project = {
-
-        name: projectNameInput.value,
-        description: projectDescriptionTextarea.value,
-        subject: projectSubjectInput.value,
-        deliveryDate: projectDeliveryDateInput.value,
-        status: projectStatusInput.value
-
-    };
-
-let projectStatusText = "";
+function createProjectCard(project) {
+    let projectStatusText = "";
 
 if (project.status === "in-progress") {
     projectStatusText = "En curso";
@@ -63,7 +66,7 @@ const projectCard = document.createElement("div");
 
 projectCard.classList.add("card");
 
-projectCard.innerHTML = `
+projectCard.innerHTML = `   
     <h3>${project.name}</h3>
 
     <p>${project.description}</p>
@@ -77,10 +80,36 @@ projectCard.innerHTML = `
     <p>${projectStatusText}</p>
 `;
     projectsList.appendChild(projectCard);
+
+}
+
+projectForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    const project = {
+
+        name: projectNameInput.value,
+        description: projectDescriptionTextarea.value,
+        subject: projectSubjectInput.value,
+        deliveryDate: projectDeliveryDateInput.value,
+        status: projectStatusInput.value
+
+    };
+
+    projects.push(project);
+
+    const projectsText = JSON.stringify(projects);
+
+    console.log(projects);
+    console.log(projectsText);
+
+    localStorage.setItem("projects", projectsText);
+
+    createProjectCard(project);
+
     overlay.classList.add("hidden");
     projectForm.reset();
-    console.log(projectsList.children.length);
     console.log(project);
-    console.log(projectCard);
-
+   
 });
