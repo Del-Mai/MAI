@@ -32,7 +32,11 @@ pendingCount.textContent = `${pendingTasks} tareas pendientes`;
 
 let completedProject = 0;
 
-const sortedTasks = [...tasks];
+const pendingTasksList = tasks.filter(function (task) {
+    return task.status === "pending";
+});
+
+const sortedTasks = [...pendingTasksList];
 
 sortedTasks.sort(function (a, b) {
 

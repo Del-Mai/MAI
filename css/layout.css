@@ -80,6 +80,12 @@ aside a.active {
     gap: 20px;
 }
 
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .card {
     background: white;
 
@@ -198,4 +204,14 @@ aside a.active {
 
 .hidden{
     display: none;
+}
+
+.complete-button {
+    margin-top: 15px;
+}
+
+.task-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
 }

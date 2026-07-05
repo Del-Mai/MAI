@@ -116,6 +116,26 @@ projectForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
+    if (projectNameInput.value.trim() === "") {
+    alert("El nombre del proyecto es obligatorio.");
+    return;
+}
+
+if (projectDescriptionTextarea.value.trim() === "") {
+    alert("La descripción del proyecto es obligatoria.");
+    return;
+}
+
+if (projectSubjectInput.value.trim() === "") {
+    alert("La materia es obligatoria.");
+    return;
+}
+
+if (projectDeliveryDateInput.value === "") {
+    alert("Debes seleccionar una fecha de entrega.");
+    return;
+}
+
     const project = {
 
         name: projectNameInput.value,

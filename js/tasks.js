@@ -40,11 +40,7 @@ if (savedProjects) {
 
 }
 
-for (const task of tasks) {
-
-    createTaskCard(task);
-
-}
+renderTasks();
 
 openTaskModalButton.addEventListener("click", function () {
 
@@ -63,6 +59,18 @@ cancelTaskModalButton.addEventListener("click", function () {
     overlay.classList.add("hidden");
 
 });
+
+function renderTasks() {
+
+    tasksList.innerHTML = "";
+
+    for (const task of tasks) {
+
+        createTaskCard(task);
+
+    }
+
+}
 
 function createTaskCard(task) {
 let taskStatusText = "";
@@ -99,12 +107,58 @@ taskCard.innerHTML = `
     <p>${taskStatusText}</p>
 `;
 
+if (task.status === "pending") {
+
+    const completeButton = document.createElement("button");
+
+    completeButton.textContent = "✔ Marcar como completada";
+
+    completeButton.classList.add(
+        "primary-button",
+        "complete-button"
+    );
+
+    completeButton.addEventListener("click", function () {
+
+    task.status = "completed";
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    renderTasks();
+
+});
+
+    const taskActions = document.createElement("div");
+
+    taskActions.classList.add("task-actions");
+
+    taskActions.appendChild(completeButton);
+
+    taskCard.appendChild(taskActions);
+
+}
+
 tasksList.appendChild(taskCard);
 }
 
 taskForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
+
+    if (taskNameInput.value.trim() === "") {
+    alert("El nombre de la tarea es obligatorio.");
+    return;
+    }
+
+    if (taskDescriptionTextarea.value.trim() === "") {
+    alert("La descripción de la tarea es obligatoria.");
+    return;
+    }
+
+    if (taskDeliveryDateInput.value === "") {
+    alert("Debes seleccionar una fecha límite.");
+    return;
+    }
 
     const task = {
 
@@ -118,11 +172,9 @@ taskForm.addEventListener("submit", function (event) {
 
 tasks.push(task);
 
-const tasksText = JSON.stringify(tasks);
+localStorage.setItem("tasks", JSON.stringify(tasks));
 
-localStorage.setItem("tasks", tasksText);
-
-createTaskCard(task);
+renderTasks();
 
 overlay.classList.add("hidden");
 taskForm.reset();
