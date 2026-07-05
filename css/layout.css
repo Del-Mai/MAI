@@ -213,5 +213,18 @@ aside a.active {
 .task-actions {
     display: flex;
     justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.delete-button {
+    background: #C0392B;
+
     margin-top: 15px;
+    margin-left: 5px;
+}
+
+
+.delete-button:hover {
+    background: #A93226;
 }

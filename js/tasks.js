@@ -113,9 +113,18 @@ if (task.status === "pending") {
 
     completeButton.textContent = "✔ Marcar como completada";
 
+    const deleteButton = document.createElement("button");
+
+    deleteButton.textContent = "🗑 Eliminar";
+
     completeButton.classList.add(
         "primary-button",
         "complete-button"
+    );
+
+    deleteButton.classList.add(
+    "primary-button",
+    "delete-button"
     );
 
     completeButton.addEventListener("click", function () {
@@ -126,13 +135,31 @@ if (task.status === "pending") {
 
     renderTasks();
 
-});
+    });
+
+    deleteButton.addEventListener("click", function () {
+
+    if (!confirm("¿Deseas eliminar esta tarea?")) {
+        return;
+    }
+
+    const index = tasks.indexOf(task);
+
+    tasks.splice(index, 1);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    renderTasks();
+
+    });
 
     const taskActions = document.createElement("div");
 
     taskActions.classList.add("task-actions");
 
     taskActions.appendChild(completeButton);
+
+    taskActions.appendChild(deleteButton);
 
     taskCard.appendChild(taskActions);
 
