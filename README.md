@@ -21,7 +21,7 @@ MAI es una aplicación web diseñada para ayudar a los estudiantes a organizar p
 
 1. Clonar el repositorio.
 2. Abrir el proyecto con Visual Studio Code.
-3. Ejecutar `index.html` utilizando Live Server.
+3. Ejecutar `dashboard.html` utilizando Live Server.
 
 ## Autor
 
