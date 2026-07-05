@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title> MAI - Proyectos</title>
+    <title> MAI - Tareas</title>
     <link rel="stylesheet" href="../css/layout.css">
 </head>
 
@@ -14,50 +14,48 @@
 <div class="layout">
 <aside>
     <a href="dashboard.html">Dashboard</a>
-    <a href="#" class="active">Proyectos</a>
-    <a href="tasks.html">Tareas</a>
+    <a href="projects.html">Proyectos</a>
+    <a href="#" class="active">Tareas</a>
     <a href="#">Calendario</a>
     <a href="#">Configuración</a>
 </aside>
 <main>
     <div class="welcome">
-        <h2> Proyectos</h2>
-        <p>Aquí puedes administrar todos tus proyectos.</p>
+        <h2>Tareas</h2>
+        <p>Aquí puedes administrar todas tus tareas.</p>
     </div>
-<button id="open-project-modal" class="primary-button">
-    +Nuevo proyecto
+<button id="open-task-modal" class="primary-button">
+    +Nueva tarea
 </button>
 <div class="overlay hidden">
     <div class="modal">
 
-    <div id="close-project-modal" class="modal-header">
-        <h2> Nuevo proyecto</h2>
+    <div id="close-task-modal" class="modal-header">
+        <h2> Nueva tarea</h2>
         <button class="close-modal" type="button">
          ✕
         </button>
     </div>
-    <form id="project-form">
-       <label for="name">Nombre del proyecto</label>
+    <form id="task-form">
+       <label for="name">Nombre de la tarea</label>
        <input
            id="name"
            name="name"
            type="text"
-           placeholder="Nombre del proyecto"
+           placeholder="Nombre de la tarea"
         >
-      <label for="description">Descripción del proyecto</label>
+      <label for="description">Descripción de la tarea</label>
        <textarea
            id="description"
            name="description"
-           placeholder="Describe el proyecto"
+           placeholder="Descripción de la tarea"
        ></textarea>
-       <label for="subject">Materia</label>
-       <input
-        id="subject"
-        name="subject"
-        type="text"
-        placeholder="Materia del proyecto"
-       >
-       <label for="delivery-date">Fecha de entrega</label>
+
+      <label for="project">Proyecto</label>
+      <select id="project" name="project">
+      </select>
+
+       <label for="delivery-date">Fecha limite</label>
        <input
            id="delivery-date"
            name="delivery-date"
@@ -65,27 +63,26 @@
         >
         <label for="status">Estado</label>
             <select id="status" name="status">
-            <option value="in-progress">En curso</option>
-            <option value="completed">Finalizado</option>
-            <option value="paused">Pausado</option>
+            <option value="pending">Pendiente</option>
+            <option value="completed">Completada</option>
             </select>
-        <div id="cancel-project-modal" class="modal-actions">
+        <div id="cancel-task-modal" class="modal-actions">
         <button class="primary-button" type="button">
           Cancelar
         </button>
 
         <button class="primary-button" type="submit">
-         Guardar proyecto
+         Guardar Tarea
         </button>
         </div>
     </form>
     </div>
 </div>
-    <div class="projects-list">
+    <div class="tasks-list">
        
     </div>
 </main>
 </div>
-<script src="../js/projects.js"></script>
+<script src="../js/tasks.js"></script>
 </body>
 </html>

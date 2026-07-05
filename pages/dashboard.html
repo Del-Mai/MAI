@@ -19,7 +19,7 @@
 <aside>
     <a href="#" class="active">Dashboard</a>
     <a href="projects.html">Proyectos</a>
-    <a href="#">Tareas</a>
+    <a href="tasks.html">Tareas</a>
     <a href="#">Calendario</a>
     <a href="#">Configuración</a>
 </aside>
@@ -31,23 +31,25 @@
 <div class="cards">  
 <div class="card">
     <h3>Proyectos</h3>
-    <p>4 proyectos activos</p>
+    <p id="projects-count"></p>
 </div>
 <div class="card">
     <h3>Tareas pendientes</h3>
-    <p>Tienes 15 tareas pendientes</p>
+    <p id="pending-count"></p>
 </div>
 <div class="card">
     <h3>Proyectos completados</h3>
-    <p>Has completado 7 proyectos</p>
+    <p id="completed-projects-count"></p>
 </div>
 </div>
 <div class="card upcoming">
-    <h3>Próximas entregas</h3>
-    <p>Página Web — 3 de julio</p>
-    <p>RAC — 15 de julio</p>
+    <h3>Tus próximas tareas:</h3>
+
+    <div id="upcoming-deliveries"></div>
+
 </div>
 </main>
 </div>
+<script src="../js/dashboard.js"></script>
 </body>
 </html>
