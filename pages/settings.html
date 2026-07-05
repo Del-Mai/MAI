@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title> MAI - Configuraciones</title>
+    <link rel="stylesheet" href="../css/layout.css">
+</head>
+
+<body>
+<header>
+     <h1>MAI</h1>
+     <p> Usuario</p>
+</header>
+<div class="layout">
+<aside>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="projects.html">Proyectos</a>
+    <a href="tasks.html">Tareas</a>
+    <a href="#">Calendario</a>
+    <a href="#" class="active">Configuración</a>
+</aside>
+
+<main>
+    <div class="welcome">
+        <h2>Configuraciones</h2>
+        <p>Aquí puedes personalizar tu experiencia en MAI.</p>
+    </div>
+
+<div class="card">
+
+    <form id="settings-form">
+        <label for="username">Nombre de Usuario</label>
+        <input
+           id="username"
+           name="username"
+           type="text"
+           placeholder="Ingresa tu nombre"
+        >
+        <label for="emailsettings">Email</label>
+        <input
+           id="emailsettings"
+           name="emailsettings"
+           type="email"
+           placeholder="Ingresa tu correo electrónico"
+        >
+        <label for="theme">Escoge un tema</label>
+        <select id="theme">
+         <option value="light">
+            Claro
+         </option>
+
+         <option value="dark">
+            Oscuro 
+         </option>
+        </select>
+            
+       <button class="primary-button">
+           Guardar cambios
+       </button>
+    </form>
+</div>
+<script src="../js/settings.js"></script>
+</main>

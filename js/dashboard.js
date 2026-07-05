@@ -3,8 +3,25 @@ const pendingCount = document.querySelector("#pending-count");
 const completedProjectsCount = document.querySelector("#completed-projects-count");
 const upcomingDeliveries = document.querySelector("#upcoming-deliveries");
 
-const savedProjects = localStorage.getItem("projects");
+const usernameDisplay = document.querySelector("#username-display");
 const savedTasks = localStorage.getItem("tasks");
+
+const savedProjects = localStorage.getItem("projects");
+
+
+const savedSettings = localStorage.getItem("settings");
+
+if (savedSettings) {
+
+    const settings = JSON.parse(savedSettings);
+
+    if (settings.username.trim() !== "") {
+
+        usernameDisplay.textContent = `Hola, ${settings.username} 👋`;
+
+    }
+
+}
 
 let projects = [];
 let tasks = [];
