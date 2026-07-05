@@ -12,6 +12,8 @@ const projectDeliveryDateInput = document.querySelector("#delivery-date");
 const projectStatusInput = document.querySelector("#status");
 const projectsList = document.querySelector(".projects-list");
 
+const searchProjectInput = document.querySelector("#search-project");
+
 let projects = [];
 
 const savedProjects = localStorage.getItem("projects");
@@ -32,11 +34,7 @@ if (savedTasks) {
 
 }
 
-for (const project of projects) {
-
-    createProjectCard(project);
-
-}
+renderProjects();
 
 console.log(openProjectModalButton);
 
@@ -58,6 +56,29 @@ cancelProjectModalButton.addEventListener("click", function () {
 
 });
 
+searchProjectInput.addEventListener("input", function () {
+
+    renderProjects(searchProjectInput.value);
+
+});
+
+function renderProjects(search = "") {
+
+    projectsList.innerHTML = "";
+
+    for (const project of projects) {
+
+        if (
+            project.name.toLowerCase().includes(search.toLowerCase())
+        ) {
+
+            createProjectCard(project);
+
+        }
+
+    }
+
+}
 function createProjectCard(project) {
     let projectStatusText = "";
 
@@ -68,6 +89,8 @@ if (project.status === "in-progress") {
 } else if (project.status === "paused") {
     projectStatusText = "Pausado";
 }
+
+
 
 const [year, month, day] = project.deliveryDate.split("-");
 
@@ -108,6 +131,49 @@ projectCard.innerHTML = `
 
     <p>${projectStatusText}</p>
 `;
+if (project.status !== "completed") {
+
+    const completeProjectButton = document.createElement("button");
+
+    completeProjectButton.textContent = "✔ Marcar como finalizado";
+
+    completeProjectButton.classList.add(
+        "primary-button",
+        "complete-project-button"
+    );
+
+    completeProjectButton.addEventListener("click", function () {
+
+    if (pendingTasks > 0) {
+
+        const confirmFinish = confirm(
+            `Este proyecto tiene ${pendingTasks} tarea(s) pendiente(s).\n\n¿Deseas marcarlo como finalizado de todas formas?`
+        );
+
+        if (!confirmFinish) {
+            return;
+        }
+
+    }
+
+        project.status = "completed";
+
+        localStorage.setItem("projects", JSON.stringify(projects));
+
+        renderProjects();
+
+        });
+
+    const projectActions = document.createElement("div");
+
+    projectActions.classList.add("task-actions");
+
+    projectActions.appendChild(completeProjectButton);
+
+    projectCard.appendChild(projectActions);
+
+}
+
     projectsList.appendChild(projectCard);
 
 }
@@ -148,14 +214,11 @@ if (projectDeliveryDateInput.value === "") {
 
     projects.push(project);
 
-    const projectsText = JSON.stringify(projects);
-
     console.log(projects);
-    console.log(projectsText);
+    localStorage.setItem("projects", JSON.stringify(projects));
 
-    localStorage.setItem("projects", projectsText);
 
-    createProjectCard(project);
+    renderProjects();
 
     overlay.classList.add("hidden");
     projectForm.reset();

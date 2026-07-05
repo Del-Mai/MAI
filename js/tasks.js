@@ -13,6 +13,8 @@ const taskStatusInput = document.querySelector("#status");
 
 const tasksList = document.querySelector(".tasks-list");
 
+const searchTaskInput = document.querySelector("#search-task");
+
 let tasks = [];
 
 const savedTasks = localStorage.getItem("tasks");
@@ -60,13 +62,25 @@ cancelTaskModalButton.addEventListener("click", function () {
 
 });
 
-function renderTasks() {
+searchTaskInput.addEventListener("input", function () {
+
+    renderTasks(searchTaskInput.value);
+
+});
+
+function renderTasks(search = "") {
 
     tasksList.innerHTML = "";
 
     for (const task of tasks) {
 
-        createTaskCard(task);
+        if (
+            task.name.toLowerCase().includes(search.toLowerCase())
+        ) {
+
+            createTaskCard(task);
+
+        }
 
     }
 
