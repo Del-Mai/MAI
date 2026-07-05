@@ -50,14 +50,15 @@ if (upcomingTasks.length === 0) {
 
     for (const task of upcomingTasks) {
 
-        const date = new Date(task.deliveryDate);
+        const [year, month, day] = task.deliveryDate.split("-");
+
+        const date = new Date(year, month - 1, day);
 
         const formattedDate = date.toLocaleDateString("es-BO", {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
+        day: "numeric",
+        month: "long",
+        year: "numeric"
         });
-
         upcomingDeliveries.innerHTML += `
             <p><strong>${task.name}</strong></p>
             <p>Proyecto: ${task.project}</p>

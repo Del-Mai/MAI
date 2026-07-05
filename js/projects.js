@@ -22,6 +22,16 @@ if (savedProjects) {
 
 }
 
+let tasks = [];
+
+const savedTasks = localStorage.getItem("tasks");
+
+if (savedTasks) {
+
+    tasks = JSON.parse(savedTasks);
+
+}
+
 for (const project of projects) {
 
     createProjectCard(project);
@@ -59,12 +69,31 @@ if (project.status === "in-progress") {
     projectStatusText = "Pausado";
 }
 
-const date = new Date(project.deliveryDate);
-const formattedDate = date.toLocaleDateString("es-BO");
+const [year, month, day] = project.deliveryDate.split("-");
+
+const date = new Date(year, month - 1, day);
+
+const formattedDate = date.toLocaleDateString("es-BO", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+});
 
 const projectCard = document.createElement("div");
 
 projectCard.classList.add("card");
+
+let pendingTasks = 0;
+
+for (const task of tasks) {
+
+    if (task.status === "pending" && task.project === project.name) {
+
+        pendingTasks++;
+
+    }
+
+}
 
 projectCard.innerHTML = `   
     <h3>${project.name}</h3>
@@ -75,7 +104,7 @@ projectCard.innerHTML = `
 
     <p>Entrega: ${formattedDate}</p>
 
-    <p>Tareas pendientes: 0</p>
+    <p>Tareas pendientes: ${pendingTasks}</p>
 
     <p>${projectStatusText}</p>
 `;

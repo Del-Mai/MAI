@@ -73,8 +73,15 @@ if (task.status === "pending") {
     taskStatusText = "Completada";
 }
 
-const date = new Date(task.deliveryDate);
-const formattedDate = date.toLocaleDateString("es-BO");
+const [year, month, day] = task.deliveryDate.split("-");
+
+const date = new Date(year, month - 1, day);
+
+const formattedDate = date.toLocaleDateString("es-BO", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+});
 
 const taskCard = document.createElement("div");
 
