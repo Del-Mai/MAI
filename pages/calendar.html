@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MAI - Calendario</title>
+    <link rel="stylesheet" href="../css/layout.css">
+</head>
+
+<body>
+
+<header>
+    <h1>MAI</h1>
+    <p id="username-display">Usuario</p>
+</header>
+
+<div class="layout">
+
+<aside>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="projects.html">Proyectos</a>
+    <a href="tasks.html">Tareas</a>
+    <a href="#" class="active">Calendario</a>
+    <a href="settings.html">Configuración</a>
+</aside>
+
+<main>
+
+    <div class="welcome">
+
+        <h2>Calendario</h2>
+
+        <p>Aquí puedes visualizar las entregas del mes.</p>
+
+    </div>
+
+    <div class="card">
+
+        <h3 id="month-title"></h3>
+
+        <div class="calendar-header">
+
+            <div>L</div>
+            <div>M</div>
+            <div>M</div>
+            <div>J</div>
+            <div>V</div>
+            <div>S</div>
+            <div>D</div>
+
+        </div>
+
+        <div id="calendar-grid"></div>
+
+    </div>
+
+    <div class="card calendar-events-card">
+
+        <h3>Entregas del mes</h3>
+
+        <div id="calendar-events"></div>
+
+    </div>
+
+</main>
+
+</div>
+
+<script src="../js/calendar.js"></script>
+
+</body>
+
+</html>
