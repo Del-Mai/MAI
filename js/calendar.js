@@ -58,7 +58,13 @@ for (let day = 1; day <= daysInMonth; day++) {
 
     for (const project of projects) {
 
-        const projectDate = new Date(project.deliveryDate);
+        const [yearProject, monthProject, dayProject] = project.deliveryDate.split("-");
+
+        const projectDate = new Date(
+            yearProject,
+            monthProject - 1,
+            dayProject
+        );
 
         if (
             projectDate.getDate() === day &&
@@ -75,7 +81,13 @@ for (let day = 1; day <= daysInMonth; day++) {
     }
 
     for (const task of tasks) {
-    const taskDate = new Date(task.deliveryDate);
+        const [yearTask, monthTask, dayTask] = task.deliveryDate.split("-");
+        const taskDate = new Date(
+            yearTask,
+            monthTask - 1,
+            dayTask
+        );
+
         if (
            taskDate.getDate() === day &&
            taskDate.getMonth() === month &&
@@ -118,7 +130,14 @@ deliveries.sort(function (a, b) {
 });
 
 for (const delivery of deliveries) {
-    const date = new Date(delivery.deliveryDate);
+    const [deliveryYear, deliveryMonth, deliveryDay] =
+       delivery.deliveryDate.split("-");
+
+    const date = new Date(
+       deliveryYear,
+       deliveryMonth - 1,
+       deliveryDay
+    );
     if (
         date.getMonth() !== month ||
         date.getFullYear() !== year
